@@ -1,0 +1,133 @@
+<html>
+<head>
+<style>
+#d1
+{
+border:1px solid black;
+margin:40;
+indent:20px;
+width:30%;
+background-color:#4E4E50;
+}
+#d{
+width:150;
+height:50;
+font-size:25;
+}
+#t{
+width:150;
+height:50;
+font-size:25;
+color:red;
+font-weight:bold;
+}
+input{
+border-radius:8px;
+width:70;
+height:50;
+margin:2;
+font-size:25;
+background-color:#;
+}
+.display:hover{background-color:white;}
+input:hover {background-color: #DAAD86;}
+input:active {
+  background-color: #BC968A;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+.display{
+width:300;
+height:60;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+var final=' ';
+$(".cal").on('click',function(){
+if($(this).attr('data-role')!='operator'){
+$(".display").val($(".display").val()+$(this).val());
+}
+else{
+if($(".display").val()!=''){
+$(".display").val($(".display").val()+ $(this).val());
+}
+}
+});
+$(".clear").on('click',function(){
+$(".display").val(' ');
+});
+$(".equ").on('click',function(){
+var expression=$(".display").val();
+final=eval(expression);
+$(".display").val(final);
+});
+$('#sin').click(function(){
+  $(".display").val(Math.sin((22/7)/180*$(".display").val()).toFixed(2));
+});
+$('#cos').click(function(){
+$(".display").val(Math.cos((22/7)/180*$(".display").val()).toFixed(2));
+});
+$('#tan').click(function(){
+$(".display").val(Math.tan((22/7)/180*$(".display").val()).toFixed(2));
+});
+$('#log').click(function(){
+$(".display").val(Math.log($(".display").val()).toFixed(2));
+});
+$('#ex1').click(function(){
+$(".display").val(Math.pow($(".display").val(),2));
+});
+});
+</script>
+</head>
+<body><center><div id="d1">
+<table>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+<tr>
+<td colspan="4"><input type="text" class="display" name="Display"></td>
+</tr>
+<tr>
+<td colspan="2"><input type="button" class="equ"  value="=" id="d"></td>
+<td colspan="2"><input type="button" class="clear" id="t" value="Clear"></td>
+</tr>
+<tr>
+<td><input type="button" class="cal" data-role="number" value="7"></td>
+<td><input type="button" class="cal" data-role="number" value="8"></td>
+<td><input type="button" class="cal" data-role="number" value="9"></td>
+<td><input type="button" class="cal" data-role="operator" value="*"></td>
+</tr>
+<tr>
+<td><input type="button" class="cal" data-role="number" value="4"></td>
+<td><input type="button" class="cal" data-role="number" value="5"></td>
+<td><input type="button" class="cal" data-role="number" value="6"></td>
+<td><input type="button" class="cal" data-role="operator" value="-"></td>
+</tr>
+<tr>
+<td><input type="button" class="cal" data-role="number" value="1"></td>
+<td><input type="button" class="cal" data-role="number" value="2"></td>
+<td><input type="button" class="cal" data-role="number" value="3"></td>
+<td><input type="button" class="cal" data-role="operator" value="+"></td>
+</tr>
+
+<tr>
+
+<td><input type="button" id="ex1" value="^"></td>
+<td><input type="button" class="cal" data-role="number" value="0" align="centre"></td>
+<td><input type="button" class="cal" data-role="." value="."></td>
+<td><input type="button" class="cal" data-role="operator" value="/"></td>
+</tr>
+<tr>
+<td><input type="button" id="sin" value="sin"></td>
+<td><input type="button" id="cos" value="cos"></td>
+<td><input type="button" id="tan" value="tan"></td>
+<td><input type="button" id="log" value="log"></td>
+</tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+</table></center></div>
+</body>
+</html>
